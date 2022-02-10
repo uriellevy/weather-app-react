@@ -3,6 +3,7 @@ import React, { useState, useEffect, createContext } from "react";
 export const WeatherContext = createContext();
 
 export const WeatherProvider = (props) => {
+  // const [city, setCity] = useState();
   const apiKey = "w1B0oqUDkLzkIiuxyC6Agc4bolPrw4Gt";
 
   const getCity = async (cityName) => {
