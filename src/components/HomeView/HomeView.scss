@@ -20,10 +20,10 @@
 
     input {
       border-radius: 10px;
-
       height: 25px;
       border: none;
       width: 100%;
+      background-color: transparent;
       &:focus {
         outline: none;
       }
