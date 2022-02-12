@@ -4,7 +4,7 @@ export const WeatherContext = createContext();
 
 export const WeatherProvider = (props) => {
   const [closeHomeViewAddModal, setCloseHomeViewAddModal] = useState(false);
-  // const [city, setCity] = useState();
+  const [cityNameSearch, setCityNameSearch] = useState("");
   const apiKey = "w1B0oqUDkLzkIiuxyC6Agc4bolPrw4Gt";
 
   const getCity = async (cityName) => {
@@ -26,12 +26,17 @@ export const WeatherProvider = (props) => {
     return data;
   };
 
-  getCity("munich").then((data) => console.log(data));
-  // .then((data) => {
-  //   return currentCondition(data.Key);
-  // });
+  // getCity("munich").then((data) => console.log(data));
+  // // .then((data) => {
+  // //   return currentCondition(data.Key);
+  // // });
 
-  const value = { closeHomeViewAddModal, setCloseHomeViewAddModal };
+  const value = {
+    closeHomeViewAddModal,
+    setCloseHomeViewAddModal,
+    cityNameSearch,
+    setCityNameSearch,
+  };
 
   return (
     <WeatherContext.Provider value={value}>

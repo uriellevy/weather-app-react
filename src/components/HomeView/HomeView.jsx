@@ -5,9 +5,17 @@ import HomeViewAddModal from "./HomeViewAddModal";
 import { WeatherContext } from "../context/WeatherContext";
 
 const HomeView = () => {
-  const { closeHomeViewAddModal, setCloseHomeViewAddModal } =
-    useContext(WeatherContext);
-  console.log(closeHomeViewAddModal);
+  const {
+    closeHomeViewAddModal,
+    setCloseHomeViewAddModal,
+    cityNameSearch,
+    setCityNameSearch,
+  } = useContext(WeatherContext);
+
+  const searchTypingHandler = (e) => {
+    setCityNameSearch(e.target.value);
+  };
+  console.log(cityNameSearch);
   return (
     <>
       {closeHomeViewAddModal && <HomeViewAddModal />}
@@ -15,7 +23,12 @@ const HomeView = () => {
       <div className="homeview-container">
         <div className="homeview-search">
           <FaSearch className="search-icon" />
-          <input type="text" placeholder="search by city name..." />
+          <input
+            type="text"
+            placeholder="search by city name..."
+            // onEnter={citySearchHandler}
+            onChange={searchTypingHandler}
+          />
         </div>
 
         <div className="homeview-main">
