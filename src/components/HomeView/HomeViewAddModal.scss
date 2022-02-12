@@ -1,0 +1,42 @@
+.homeview-modal {
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  z-index: 20;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+
+  h3 {
+    color: rgb(101, 144, 179);
+    margin-bottom: 50px;
+    text-align: center;
+    line-height: 25px;
+  }
+
+  button {
+    background-color: transparent;
+    color: rgb(101, 144, 179);
+    border: 2px solid rgb(101, 144, 179);
+    font-size: 18px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+
+    &:hover {
+      background-color: rgb(101, 144, 179);
+      color: #fff;
+      border: 2px solid #fff;
+    }
+  }
+}
+
+.homeview-modal-hidden {
+  opacity: 0;
+}

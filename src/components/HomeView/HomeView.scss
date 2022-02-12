@@ -15,7 +15,7 @@
 
     .search-icon {
       color: #444;
-      margin-right: 5px;
+      margin: 0 5px;
     }
 
     input {
@@ -43,6 +43,7 @@
     height: 80%;
     width: 80%;
     border: 4px solid rgba(219, 225, 241, 0.658);
+    overflow: hidden;
 
     .main-top {
       width: 100%;
