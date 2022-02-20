@@ -36,7 +36,7 @@
   }
 
   .homeview-main {
-    background-color: rgb(101, 144, 179);
+    background-color: rgb(62, 90, 112);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,6 +51,22 @@
       justify-content: space-between;
       margin: 10px;
       padding: 10px 20px;
+
+      .btn-top-right {
+        background-color: rgb(60, 79, 107);
+        color: #fff;
+        border: 2px solid #fff;
+        font-size: 15px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: all 0.1s ease;
+
+        &:hover {
+          background-color: #f4f4f4;
+          color: rgb(38, 48, 65);
+          border: 2px solid rgb(60, 79, 107);
+        }
+      }
     }
 
     .main {

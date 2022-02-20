@@ -4,38 +4,46 @@ export const WeatherContext = createContext();
 
 export const WeatherProvider = (props) => {
   const [closeHomeViewAddModal, setCloseHomeViewAddModal] = useState(false);
-  const [cityNameSearch, setCityNameSearch] = useState("");
-  const apiKey = "w1B0oqUDkLzkIiuxyC6Agc4bolPrw4Gt";
+  const [cityNameSearch, setCityNameSearch] = useState("tel aviv");
+  const [currentCityData, setCurrentCityData] = useState([]);
+  const apiKey = "aQtIbvgakOnAROCUb61WDULQYmGNuTKO";
 
-  const getCity = async (cityName) => {
+  const getCity = async (city) => {
     const res = await fetch(
-      `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${cityName}`
-    );
-    const data = await res.json();
-
-    return data[0].Key;
-  };
-
-  const currentCondition = async (id) => {
-    const res = await fetch(
-      `http://dataservice.accuweather.com/currentconditions/v1/${id}`
+      `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${city}`
     );
 
     const data = await res.json();
 
-    return data;
+    return data[0];
   };
 
-  // getCity("munich").then((data) => console.log(data));
-  // // .then((data) => {
-  // //   return currentCondition(data.Key);
-  // // });
+  const getWeather = async (number) => {
+    const res = await fetch(
+      `http://dataservice.accuweather.com/currentconditions/v1/${number}?apikey=${apiKey}`
+    );
+    const data = await res.json();
+
+    setCurrentCityData(data[0]);
+  };
+  useEffect(() => {
+    getCity(cityNameSearch)
+      // .then((data) => console.log(data.Key))
+      .then((data) => {
+        return getWeather(data.Key);
+      })
+
+      .catch((err) => console.log(err));
+    console.log(cityNameSearch);
+  }, [cityNameSearch]);
 
   const value = {
     closeHomeViewAddModal,
     setCloseHomeViewAddModal,
     cityNameSearch,
     setCityNameSearch,
+    currentCityData,
+    setCurrentCityData,
   };
 
   return (
