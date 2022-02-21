@@ -11,6 +11,7 @@ const HomeView = () => {
     cityNameSearch,
     setCityNameSearch,
     currentCityData,
+    fiveDaysData,
   } = useContext(WeatherContext);
   const [text, setText] = useState("");
 
@@ -26,6 +27,19 @@ const HomeView = () => {
       setText("");
     }
   };
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let d = new Date(currentCityData.LocalObservationDateTime);
+  let dayName = days[d.getDay()];
+  // console.log(dayName);
+
   return (
     <>
       {closeHomeViewAddModal && <HomeViewAddModal />}
@@ -48,9 +62,15 @@ const HomeView = () => {
               <div className="top-left-img"></div>
               <div className="top-left-content">
                 <h3>{cityNameSearch}</h3>
-                {/* <h3>
-                  {Math.round(currentCityData.Temperature.Metric.Value)}c°
-                </h3> */}
+                {/* {currentCityData !== [] ? (
+                  <h3>{currentCityData.Temperature.Metric.Value} c°</h3>
+                ) : (
+                  <h3>Loading...</h3>
+                )} */}
+                <h3>
+                  {currentCityData &&
+                    typeof currentCityData.LocalObservationDateTime}
+                </h3>
               </div>
             </div>
             <button className="btn-top-right">add to favorites</button>
@@ -58,8 +78,13 @@ const HomeView = () => {
           <div className="main">
             <h1>{currentCityData.WeatherText}</h1>
             <div className="main-bottom">
-              <div className="bottom-day">Mon</div>
-              <div className="bottom-temp">38c</div>
+              {fiveDaysData.map((day, index) => (
+                <div key={index} className="day-wrapper">
+                  <div className="bottom-day">Mon</div>
+                  <div className="bottom-temp">38c</div>
+                  <div className="bottom-desc">rainy</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
