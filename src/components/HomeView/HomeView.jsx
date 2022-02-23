@@ -3,6 +3,7 @@ import "./HomeView.scss";
 import { FaSearch } from "react-icons/fa";
 import HomeViewAddModal from "./HomeViewAddModal";
 import { WeatherContext } from "../context/WeatherContext";
+import { days } from "../../data";
 
 const HomeView = () => {
   const {
@@ -27,18 +28,7 @@ const HomeView = () => {
       setText("");
     }
   };
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let d = new Date(currentCityData.LocalObservationDateTime);
-  let dayName = days[d.getDay()];
-  // console.log(dayName);
+  console.log(fiveDaysData);
 
   return (
     <>
@@ -80,8 +70,17 @@ const HomeView = () => {
             <div className="main-bottom">
               {fiveDaysData.map((day, index) => (
                 <div key={index} className="day-wrapper">
-                  <div className="bottom-day">Mon</div>
-                  <div className="bottom-temp">38c</div>
+                  <div className="bottom-day">
+                    {days[new Date(day.Date).getDay()]}
+                  </div>
+                  <div className="bottom-min-temp">
+                    Day: {Math.round(day.Temperature.Minimum.Value)}
+                    c°
+                  </div>
+                  <div className="bottom-max-temp">
+                    Night: {Math.round(day.Temperature.Maximum.Value)}
+                    c°
+                  </div>
                   <div className="bottom-desc">rainy</div>
                 </div>
               ))}

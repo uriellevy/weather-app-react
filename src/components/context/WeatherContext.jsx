@@ -42,7 +42,7 @@ export const WeatherProvider = (props) => {
       .then((data) => {
         // console.log(data.Key);
         // console.log(cityNameSearch);
-        console.log(currentCityData);
+        // console.log(currentCityData);
         return getWeather(data.Key);
       })
       .catch((err) => console.log(err));
@@ -51,12 +51,11 @@ export const WeatherProvider = (props) => {
   useEffect(() => {
     getCity(cityNameSearch)
       .then((data) => {
-        console.log(fiveDaysData);
+        // console.log(fiveDaysData);
         return get5DaysForcast(data.Key);
       })
       .catch((err) => console.log(err));
   }, [cityNameSearch]);
-  console.log(fiveDaysData);
 
   const value = {
     closeHomeViewAddModal,
